@@ -1,7 +1,8 @@
-import './app.css';
+import "./app.css";
+import AppRouter from "./components/routes";
 
 function App() {
-  return <h1>Hello :)</h1>;
+  return <AppRouter />;
 }
 
 export default App;
