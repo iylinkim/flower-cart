@@ -1,10 +1,12 @@
 import { cartLists } from "data";
 import CartItem from "components/CartItem";
 import React from "react";
+import Dropdown from "components/Dropdown";
 
 const Home = (props) => {
   return (
     <div className="cart">
+      <Dropdown/>
       <h2>장바구니</h2>
       <h3>주소</h3>
       <p>서울시 강남구 도산대로 174 7층</p>
