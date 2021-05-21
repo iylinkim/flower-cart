@@ -7,7 +7,8 @@ import Total from "components/Total";
 
 const Home = (props) => {
   const [currentDeliveryType, setCurrentDeliveryType] = useState(null);
-  console.log(currentDeliveryType)
+  const [cartListsData, setCartListsData] = useState(cartLists);
+  console.log(cartListsData);
   return (
     <div className="cart">
       <h2 className="cart_title main">장바구니</h2>
@@ -29,12 +30,20 @@ const Home = (props) => {
           <label>전체</label>
         </p>
         <ul className="cart_list">
-          {cartLists.map((info) => {
-            return <CartItem key={info.id} info={info} />;
-          })}
+          {cartListsData.length
+            ? cartListsData.map((info) => {
+                return (
+                  <CartItem
+                    key={info.id}
+                    info={info}
+                    setCartListsData={setCartListsData}
+                  />
+                );
+              })
+            : "장바구니가 비었습니다"}
         </ul>
       </div>
-      <Total currentDeliveryType={currentDeliveryType}/>
+      <Total currentDeliveryType={currentDeliveryType} />
     </div>
   );
 };

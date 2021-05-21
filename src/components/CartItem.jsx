@@ -2,8 +2,12 @@ import React from "react";
 import Coutner from "./Counter";
 import "styles/cartItem.scss";
 
-const CartItem = ({ info }) => {
+const CartItem = ({ info, setCartListsData }) => {
   const { image_url, product_name, product_price, current_count, stock } = info;
+  const deleteItem = (e) => {
+    console.log(info.id);
+    setCartListsData(prev => prev.filter(data => data.id !== info.id))
+  };
   return (
     <li className="cart_item">
       <p className="chk">
@@ -17,7 +21,9 @@ const CartItem = ({ info }) => {
       <strong className="cart_item_price">
         {new Intl.NumberFormat("en-IN").format(product_price)}원
       </strong>
-      <button className="delete_btn">x</button>
+      <button onClick={deleteItem} className="delete_btn">
+        x
+      </button>
     </li>
   );
 };
