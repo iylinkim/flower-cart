@@ -1,10 +1,13 @@
 import { cartLists } from "data";
 import CartItem from "components/CartItem";
-import React from "react";
+import React, { useState } from "react";
 import Dropdown from "components/Dropdown";
 import "styles/home.scss";
+import Total from "components/Total";
 
 const Home = (props) => {
+  const [currentDeliveryType, setCurrentDeliveryType] = useState(null);
+  console.log(currentDeliveryType)
   return (
     <div className="cart">
       <h2 className="cart_title main">장바구니</h2>
@@ -14,7 +17,10 @@ const Home = (props) => {
       </div>
       <div className="cart_content">
         <h3 className="cart_title">배송방법</h3>
-        <Dropdown />
+        <Dropdown
+          currentDeliveryType={currentDeliveryType}
+          setCurrentDeliveryType={setCurrentDeliveryType}
+        />
       </div>
       <div className="cart_content">
         <h3 className="cart_title">상품 내역</h3>
@@ -28,6 +34,7 @@ const Home = (props) => {
           })}
         </ul>
       </div>
+      <Total currentDeliveryType={currentDeliveryType}/>
     </div>
   );
 };

@@ -3,13 +3,10 @@ import { useDropdown } from "hooks/state";
 import DropdownItem from "./DropdownItem";
 import { deliveryTypes } from "data";
 
-const Dropdown = memo(() => {
-  const [currentDeliveryType, setCurrentDeliveryType] = useState(null);
-  const { isDropdownOpen, onClick, deliveryType } = useDropdown(false);
+const Dropdown = memo(({currentDeliveryType,setCurrentDeliveryType}) => {
+  const { isDropdownOpen, onClick } = useDropdown();
 
   const ulRef = useRef();
-
-  console.log(currentDeliveryType)
 
   return (
     <>

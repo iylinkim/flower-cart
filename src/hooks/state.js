@@ -21,8 +21,8 @@ export const useCounter = (current_count, stock) => {
   return { count, handleMinus, handlePlus };
 };
 
-export const useDropdown = (dropdownState) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(dropdownState);
+export const useDropdown = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [deliveryType, setDeliveryType] = useState();
 
   const onClick = (e) => {
@@ -30,10 +30,8 @@ export const useDropdown = (dropdownState) => {
   };
 
   const getDeliveryType = (type) => {
-      console.log(isDropdownOpen)
     setDeliveryType(type);
   };
-
 
   return {
     isDropdownOpen,
