@@ -1,0 +1,33 @@
+.cart_title.main{
+    padding-top:100px;
+    padding-bottom:10px;
+    margin-bottom:10px;
+    border-bottom:1px solid #efefef;
+}
+
+/* cart_content */
+.cart_content{
+    padding-bottom:20px;
+    font-size:0.7rem;
+
+    & .cart_title{
+        padding:5px 0;
+        font-size:1rem;
+    }
+}
+
+/* all_chk_area */
+.all_chk_area{
+    display: flex;
+    align-items: center;
+
+    & .all_chk{
+        margin-right:5px;
+    }
+}
+
+/* cart_list */
+.cart_list{
+    margin: 15px 0;
+    border-top:1px solid #aaa;
+}

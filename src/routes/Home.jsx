@@ -2,23 +2,32 @@ import { cartLists } from "data";
 import CartItem from "components/CartItem";
 import React from "react";
 import Dropdown from "components/Dropdown";
+import "styles/home.scss";
 
 const Home = (props) => {
   return (
     <div className="cart">
-      <Dropdown/>
-      <h2>장바구니</h2>
-      <h3>주소</h3>
-      <p>서울시 강남구 도산대로 174 7층</p>
-      <h3>배송방법</h3>
-      <h3>상품 내역</h3>
-      <input type="checkbox" className="all_chk" />
-      <ul className="cart_list">
-        {cartLists.map((info) => {
-          return <CartItem key={info.id} info={info} />;
-        })}
-      </ul>
-     
+      <h2 className="cart_title main">장바구니</h2>
+      <div className="cart_content">
+        <h3 className="cart_title address">주소</h3>
+        <p>서울시 강남구 도산대로 174 7층</p>
+      </div>
+      <div className="cart_content">
+        <h3 className="cart_title">배송방법</h3>
+        <Dropdown />
+      </div>
+      <div className="cart_content">
+        <h3 className="cart_title">상품 내역</h3>
+        <p className="all_chk_area">
+          <input type="checkbox" className="all_chk" />
+          <label>전체</label>
+        </p>
+        <ul className="cart_list">
+          {cartLists.map((info) => {
+            return <CartItem key={info.id} info={info} />;
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
