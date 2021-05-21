@@ -1,4 +1,5 @@
 import React from "react";
+import Coutner from "./Counter";
 
 const CartItem = ({ info }) => {
   const { id, image_url, product_name, product_price, current_count, stock } =
@@ -12,6 +13,7 @@ const CartItem = ({ info }) => {
         <img src={image_url} alt={product_name} />
       </p>
       <strong className="cart_item_title">{product_name}</strong>
+      <Coutner current_count={current_count} stock={stock}/>
       <strong className="cart_item_price">{product_price}원</strong>
       <button className="delete_btn">x</button>
     </li>

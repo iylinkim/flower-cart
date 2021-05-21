@@ -16,6 +16,7 @@ const Home = (props) => {
           return <CartItem key={info.id} info={info} />;
         })}
       </ul>
+     
     </div>
   );
 };
