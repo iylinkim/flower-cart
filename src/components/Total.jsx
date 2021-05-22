@@ -1,14 +1,14 @@
 import { useDropdown } from "hooks/state";
 import React, { useEffect } from "react";
 
-const Total = ({ currentDeliveryType }) => {
+const Total = ({ currentDeliveryType,cartListsData }) => {
   return (
     <div className="total">
       <p className="total_item price">
         총 상품 금액<span></span>원
       </p>
       <p className="total_item price">
-        총 상품 수량<span></span>개
+        총 상품 수량<span>{cartListsData.length}</span>개
       </p>
       <p className="total_item price">
         총 배송비

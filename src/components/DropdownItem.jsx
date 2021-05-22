@@ -1,7 +1,7 @@
 import { useDeliveryType, useDropdown } from "hooks/state";
 import React, { useEffect } from "react";
 
-const DropdownItem = ({ type, isDropdownOpen, setCurrentDeliveryType }) => {
+const DropdownItem = ({ type, setCurrentDeliveryType }) => {
   const { deliveryType, getDeliveryType, setIsDropdownOpen } = useDropdown();
 
   const onClick = () => {

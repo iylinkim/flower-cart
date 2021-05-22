@@ -41,3 +41,12 @@ export const useDropdown = () => {
     getDeliveryType,
   };
 };
+
+export const useCheck = (cartItems) => {
+  const [check, setCheck] = useState({
+    allChk: true,
+    checkedItem: cartItems.length,
+  });
+
+  return { check, setCheck };
+};
