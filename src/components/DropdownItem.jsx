@@ -1,4 +1,5 @@
 import React from "react";
+import "styles/dropdown.scss";
 
 const DropdownItem = ({ type, getDeliveryType }) => {
   const onClick = () => {
@@ -7,9 +8,8 @@ const DropdownItem = ({ type, getDeliveryType }) => {
 
   return (
     <li className="type" onClick={onClick}>
-      <p className="selected"></p>
       {type.name}
-      <span>{type.delivery_price}</span>
+      <span>{type.delivery_price}원</span>
     </li>
   );
 };

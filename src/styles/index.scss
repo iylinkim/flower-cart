@@ -1,3 +1,9 @@
+@import "styles/common.scss";
+@font-face {
+  font-family: "NanumSquareR";
+  src: url("../fonts/NanumSquareR.woff");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,11 +13,23 @@ li {
   list-style: none;
 }
 
-input, select, textarea, button{
-  border:none;
-  background:none;
+input,
+select,
+textarea,
+button {
+  border: none;
+  background: none;
 }
 
-button{
-  cursor:pointer;
+button {
+  cursor: pointer;
+}
+
+// body {
+//   font-family: "Nanum Myeongjo", serif;
+// }
+body {
+  // font-family: "Noto Serif KR", serif;
+  font-family: "NanumSquareR", serif;
+  background-color: $White;
 }

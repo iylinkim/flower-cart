@@ -1,0 +1,50 @@
+@import "styles/common.scss";
+
+.dropdown {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid $DarkBrown;
+  cursor: pointer;
+  font-weight: 700;
+
+  &:hover {
+    background-color: $LightBlue;
+  }
+
+  /* delivery_type */
+  & .delivery_type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & .select_icon.open {
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+/* types */
+.types {
+  width: 250px;
+  font-weight: 700;
+  position: absolute;
+  background-color: $White;
+  z-index:1;
+  @include shadow;
+ 
+  & .type {
+    width: 100%;
+    padding: 0 10px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid $DarkBrown;
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $LightBlue;
+    }
+  }
+}

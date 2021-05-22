@@ -1,0 +1,22 @@
+@import "styles/common.scss";
+
+.total {
+  padding: 25px 10px 20px;
+  font-size: 0.8rem;
+  text-align: right;
+  border-top: 1px solid $DarkBrown;
+  border-bottom: 1px solid $DarkBrown;
+
+  & .total_item {
+      padding-bottom:5px;
+    & > span {
+      padding: 0 3px 0 10px;
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+  }
+
+  & .total_item.result{
+      font-size:1rem;
+  }
+}

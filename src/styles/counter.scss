@@ -1,0 +1,21 @@
+@import "styles/common.scss";
+
+.counter {
+  padding: 5px 3px;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  font-size: 0.8rem;
+  background-color: $White;
+  border-radius: 5px;
+
+  /* counterBtn */
+  & .counterBtn {
+    @include iconBtn;
+  }
+
+  /* number */
+  .number {
+    padding: 0 15px;
+  }
+}

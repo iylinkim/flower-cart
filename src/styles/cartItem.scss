@@ -1,14 +1,25 @@
+@import "styles/common.scss";
+
 .cart_item {
-  padding: 5px 20px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #aaa;
+  background-color: $LightGrey;
+  position: relative;
+
+  /* chk */
+  & .chk {
+    margin-right: 10px;
+  }
 
   /* cart_item_img */
   & .cart_item_img {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,17 +30,37 @@
     }
   }
 
-  /* cart_item_title,cart_item_price */
-  & .cart_item_title,
-  .cart_item_price {
-    width: 150px;
-    text-align: center;
-    font-size: 0.8rem;
-    font-weight: 400;
+  /* cart_item_text */
+  & .cart_item_text {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-grow: 1;
+    text-align: left;
+
+    /* cart_item_title, cart_item_price */
+    & .cart_item_title {
+      font-size: 0.8rem;
+      padding-bottom: 20px;
+      font-weight: 400;
+    }
+
+    & .cart_item_price {
+      font-size: 1.1rem;
+    }
   }
 
   /* delete_btn */
-//   & .delete_btn{
-      
-//   }
+  & .delete_btn {
+    @include iconBtn;
+    position:absolute;
+    right:20px;
+    top:10px;
+    color: $Orange;
+
+    &:hover{
+      background-color: $LightOrange;
+    }
+  }
 }

@@ -1,0 +1,30 @@
+$White: #fff;
+$black: #000;
+$LightBeige: #d6cec3;
+$DarkBeige: #bbb2a7;
+$MediumGrey: #ccc8c8;
+$LightGrey: #f7f7f7;
+$LightBrown: #807667;
+$DarkBrown: #292115;
+$LightOrange: rgba(243, 57, 0, 0.1);
+$Orange: #f33900;
+$DarkBlue: #00295a;
+$Blue: #015cc8;
+$LightBlue: rgba(1, 90, 198, 0.1);
+
+@mixin shadow {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+@mixin iconBtn {
+  width: 20px;
+  height: 20px;
+  font-size: 0.7rem;
+  color: $DarkBlue;
+  padding: 5px;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: $LightBlue;
+  }
+}

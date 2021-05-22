@@ -60,17 +60,19 @@ const CartItem = ({
       <p className="cart_item_img">
         <img src={image_url} alt={product_name} />
       </p>
-      <strong className="cart_item_title">{product_name}</strong>
+      <div className="cart_item_text">
+        <strong className="cart_item_title">{product_name}</strong>
+        <strong className="cart_item_price">
+          {new Intl.NumberFormat("en-IN").format(product_price)}원
+        </strong>
+      </div>
       <Coutner
         current_count={current_count}
         stock={stock}
         getItemCount={getItemCount}
       />
-      <strong className="cart_item_price">
-        {new Intl.NumberFormat("en-IN").format(product_price)}원
-      </strong>
       <button onClick={deleteItem} className="delete_btn">
-        x
+        <i className="fas fa-times"></i>
       </button>
     </li>
   );

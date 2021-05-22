@@ -95,7 +95,11 @@ const Home = () => {
         cartListsData={cartListsData}
         getTotalPrice={getTotalPrice}
       />
-      <button onClick={handleOrder}>주문하기</button>
+      <div className="order_area">
+        <button className="order_btn" onClick={handleOrder}>
+          주문하기
+        </button>
+      </div>
     </div>
   );
 };
