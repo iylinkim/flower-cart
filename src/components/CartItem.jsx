@@ -49,7 +49,9 @@ const CartItem = ({
   };
 
   const getItemCount = (count) => {
-    // console.log(count);
+    setCartListsData((prev) =>
+      prev.map((data) => ({ ...data, select_count: count }))
+    );
   };
   return (
     <li id={id} className="cart_item">

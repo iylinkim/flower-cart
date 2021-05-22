@@ -28,7 +28,6 @@ const Home = (props) => {
     setCheck((prev) => !prev);
   };
 
-  console.log(cartListsData.filter(data => data));
 
   return (
     <div className="cart">
