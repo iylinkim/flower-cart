@@ -10,6 +10,8 @@ const Total = ({ currentDeliveryType, cartListsData, getTotalPrice }) => {
     getTotalPrice(totalPrice);
   }, [totalPrice]);
 
+
+
   return (
     <div className="total">
       <p className="total_item">

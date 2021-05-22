@@ -21,7 +21,7 @@ const Home = () => {
   const inputRef = useRef();
   useEffect(() => {
     if (inputRef.current) {
-      if (check.checkedItem === cartListsData.length || check.allChk) {
+      if (cartListsData.filter(data => data.selected).length === cartLists.length) {
         inputRef.current.checked = true;
       } else {
         inputRef.current.checked = false;
@@ -29,8 +29,9 @@ const Home = () => {
     }
   }, [check, cartListsData.length]);
 
+
   const handleCheck = () => {
-    setCheck((prev) => !prev);
+    setCheck((prev) => ({ ...prev, allChk: !prev.allChk }));
   };
 
   useEffect(() => {

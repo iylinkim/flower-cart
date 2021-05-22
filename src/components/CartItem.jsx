@@ -18,18 +18,22 @@ const CartItem = ({
 
   const inputRef = useRef();
   useEffect(() => {
-    if (check.checkedItem === cartListsData.length) {
+    if (check.allChk) {
       if (check) {
         inputRef.current.checked = true;
       } else {
         inputRef.current.checked = false;
       }
     }
-  }, [check, cartListsData.length]);
+  }, [check]);
 
   const handleClick = (e) => {
     if (!e.currentTarget.checked) {
-      check.checkedItem -= 1;
+      setCheck((prev) => ({
+        checkedItem: (prev.checkedItem -= 1),
+        ...prev,
+      }));
+
       setCartListsData(
         cartListsData.map((info) => {
           if (info.id === id) return { ...info, selected: false };
@@ -37,7 +41,10 @@ const CartItem = ({
         })
       );
     } else {
-      check.checkedItem += 1;
+      setCheck((prev) => ({
+        checkedItem: (prev.checkedItem += 1),
+        ...prev,
+      }));
       setCartListsData(
         cartListsData.map((info) => {
           if (info.id === id) return { ...info, selected: true };
@@ -52,6 +59,17 @@ const CartItem = ({
       prev.map((data) => ({ ...data, select_count: count }))
     );
   };
+
+  useEffect(() => {
+    if (inputRef.current) {
+      if (info.selected) {
+        inputRef.current.checked = true;
+      } else {
+        inputRef.current.checked = false;
+      }
+    }
+  }, [check, cartListsData.length]);
+
   return (
     <li id={id} className="cart_item">
       <p className="chk">
