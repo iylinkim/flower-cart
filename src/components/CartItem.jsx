@@ -11,6 +11,7 @@ const CartItem = ({
 }) => {
   const { id, image_url, product_name, product_price, current_count, stock } =
     info;
+
   const deleteItem = () => {
     setCartListsData((prev) => prev.filter((data) => data.id !== info.id));
     setCheck((prev) => ({ ...prev, checkedItem: cartListsData.length }));
@@ -20,11 +21,6 @@ const CartItem = ({
 
   const handleClick = (e) => {
     if (!e.currentTarget.checked) {
-      setCheck((prev) => ({
-        checkedItem: (prev.checkedItem -= 1),
-        ...prev,
-      }));
-
       setCartListsData(
         cartListsData.map((info) => {
           if (info.id === id) return { ...info, selected: false };
@@ -32,10 +28,6 @@ const CartItem = ({
         })
       );
     } else {
-      setCheck((prev) => ({
-        checkedItem: (prev.checkedItem += 1),
-        ...prev,
-      }));
       setCartListsData(
         cartListsData.map((info) => {
           if (info.id === id) return { ...info, selected: true };
@@ -61,6 +53,14 @@ const CartItem = ({
     }
   }, [check, cartListsData.length]);
 
+  useEffect(() => {
+    if (check.allChk) {
+      inputRef.current.checked = true;
+    } else {
+      inputRef.current.checked = false;
+    }
+  }, [check.allChk]);
+
   return (
     <li id={id} className="cart_item">
       <p className="chk">
@@ -72,7 +72,7 @@ const CartItem = ({
       <div className="cart_item_text">
         <strong className="cart_item_title">{product_name}</strong>
         <strong className="cart_item_price">
-          {new Intl.NumberFormat("en-IN").format(product_price)}원
+          {new Intl.NumberFormat("en-US").format(product_price)}원
         </strong>
       </div>
       <Coutner

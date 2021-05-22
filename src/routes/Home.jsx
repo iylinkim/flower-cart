@@ -1,4 +1,3 @@
-import { cartLists } from "data";
 import CartItem from "components/CartItem";
 import React, { useEffect, useRef, useState } from "react";
 import Dropdown from "components/Dropdown";
@@ -18,17 +17,16 @@ const Home = () => {
   );
 
   useEffect(() => {
+    const filterd = cartListsData.filter((data) => data.selected);
+    
     if (inputRef.current) {
-      if (
-        cartListsData.filter((data) => data.selected).length ===
-        cartLists.length
-      ) {
+      if (check.allChk && filterd.length === cartListsData.length) {
         inputRef.current.checked = true;
-      } else {
+      } else if (filterd.length !== cartListsData.length) {
         inputRef.current.checked = false;
       }
     }
-  }, [check, cartListsData.length, cartListsData]);
+  }, [cartListsData, check.allChk]);
 
   // 주문하기 버튼 눌렀을 때
   const handleOrder = () => {
@@ -36,8 +34,6 @@ const Home = () => {
     else if (currentDeliveryType === null) alert("배송 방법을 선택해주세요");
     else console.log(orderResult);
   };
-
-  console.log(check)
 
   return (
     <div className="cart">

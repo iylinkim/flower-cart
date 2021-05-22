@@ -1,5 +1,10 @@
 @import "styles/common.scss";
 
+@keyframes slide {
+  0%{transform:translateY(-60px); opacity:0;}
+  100%{transform:translateY(0px); opacity: 1;}
+}
+
 .cart_item {
   padding: 10px 20px;
   margin-bottom: 20px;
@@ -9,6 +14,7 @@
   justify-content: space-between;
   background-color: $LightGrey;
   position: relative;
+  animation:slide 0.9s ease 1;
 
   /* chk */
   & .chk {
