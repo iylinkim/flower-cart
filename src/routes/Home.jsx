@@ -6,7 +6,7 @@ import "styles/home.scss";
 import Total from "components/Total";
 import { useCheck } from "hooks/state";
 
-const Home = (props) => {
+const Home = () => {
   const [currentDeliveryType, setCurrentDeliveryType] = useState(null);
   const [cartListsData, setCartListsData] = useState(
     cartLists.map((data) => ({ ...data, selected: true }))
@@ -34,8 +34,6 @@ const Home = (props) => {
   };
 
   useEffect(() => {
-    console.log(currentDeliveryType);
-
     setOrderResult((prev) => ({
       ...prev,
       currentDeliveryType,
@@ -48,7 +46,6 @@ const Home = (props) => {
   };
 
   const handleOrder = () => {
-    console.log(orderResult.cartListsData.length);
     if (!orderResult.cartListsData.length) alert("상품을 선택해주세요");
     else if (currentDeliveryType === null) alert("배송 방법을 선택해주세요");
     else console.log(orderResult);
@@ -63,10 +60,7 @@ const Home = (props) => {
       </div>
       <div className="cart_content">
         <h3 className="cart_title">배송방법</h3>
-        <Dropdown
-          currentDeliveryType={currentDeliveryType}
-          setCurrentDeliveryType={setCurrentDeliveryType}
-        />
+        <Dropdown setCurrentDeliveryType={setCurrentDeliveryType} />
       </div>
       <div className="cart_content">
         <h3 className="cart_title">상품 내역</h3>

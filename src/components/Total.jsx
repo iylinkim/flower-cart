@@ -1,4 +1,3 @@
-import { useDropdown } from "hooks/state";
 import React, { useEffect } from "react";
 
 const Total = ({ currentDeliveryType, cartListsData, getTotalPrice }) => {

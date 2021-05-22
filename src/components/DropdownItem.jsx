@@ -1,12 +1,8 @@
-import { useDeliveryType, useDropdown } from "hooks/state";
-import React, { useEffect } from "react";
+import React from "react";
 
-const DropdownItem = ({ type, setCurrentDeliveryType }) => {
-  const { deliveryType, getDeliveryType, setIsDropdownOpen } = useDropdown();
-
+const DropdownItem = ({ type, getDeliveryType }) => {
   const onClick = () => {
     getDeliveryType(type);
-    setCurrentDeliveryType(deliveryType);
   };
 
   return (

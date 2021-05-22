@@ -16,22 +16,18 @@ export const useCounter = (current_count, stock) => {
     } else if (count > stock) {
       setCount(stock);
     }
-  }, [count]);
+  }, [count, current_count, stock]);
 
   return { count, handleMinus, handlePlus };
 };
 
 export const useDropdown = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [deliveryType, setDeliveryType] = useState();
+  const [deliveryType, setDeliveryType] = useState(null);
 
-  const onClick = (e) => {
-    setIsDropdownOpen((prev) => !prev);
-  };
+  const onClick = () => setIsDropdownOpen((prev) => !prev);
 
-  const getDeliveryType = (type) => {
-    setDeliveryType(type);
-  };
+  const getDeliveryType = (type) => setDeliveryType(type);
 
   return {
     isDropdownOpen,

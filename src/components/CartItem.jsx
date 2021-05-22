@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Coutner from "./Counter";
 import "styles/cartItem.scss";
-import { useCheck } from "hooks/state";
 
 const CartItem = ({
   info,
