@@ -1,3 +1,4 @@
+import { cartLists } from "data";
 import { useEffect, useState } from "react";
 
 export const useCounter = (current_count, stock) => {
@@ -44,5 +45,38 @@ export const useCheck = (cartItems) => {
     checkedItem: cartItems.length,
   });
 
-  return { check, setCheck };
+  const handleCheck = () =>
+  setCheck((prev) => ({ ...prev, allChk: !prev.allChk }));
+
+  return { check, setCheck,handleCheck };
+};
+
+export const useCartLists = () => {
+  const [cartListsData, setCartListsData] = useState(
+    cartLists.map((data) => ({ ...data, selected: true }))
+  );
+
+  return { cartListsData, setCartListsData };
+};
+
+export const useOrderResult = (type,data) => {
+  const [orderResult, setOrderResult] = useState({
+    totalPrice: 0,
+    cartListsData: [],
+    currentDeliveryType: type,
+  });
+
+  const getTotalPrice = (result) => {
+    setOrderResult((prev) => ({ ...prev, totalPrice: result }));
+  };
+
+  useEffect(() => {
+    setOrderResult((prev) => ({
+      ...prev,
+      currentDeliveryType:type,
+      cartListsData: data.filter((data) => data.selected),
+    }));
+  }, [type, data]);
+
+  return { orderResult, setOrderResult,getTotalPrice };
 };

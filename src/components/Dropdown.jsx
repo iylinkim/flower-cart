@@ -24,7 +24,7 @@ const Dropdown = memo(({ setCurrentDeliveryType }) => {
               isDropdownOpen ? "select_icon open" : "select_icon close"
             }
           >
-            <i class="fas fa-sort-down"></i>
+            <i className="fas fa-sort-down"></i>
           </span>
         </p>
       </div>

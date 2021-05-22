@@ -17,15 +17,6 @@ const CartItem = ({
   };
 
   const inputRef = useRef();
-  useEffect(() => {
-    if (check.allChk) {
-      if (check) {
-        inputRef.current.checked = true;
-      } else {
-        inputRef.current.checked = false;
-      }
-    }
-  }, [check]);
 
   const handleClick = (e) => {
     if (!e.currentTarget.checked) {

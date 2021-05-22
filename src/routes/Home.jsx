@@ -4,53 +4,40 @@ import React, { useEffect, useRef, useState } from "react";
 import Dropdown from "components/Dropdown";
 import "styles/home.scss";
 import Total from "components/Total";
-import { useCheck } from "hooks/state";
+import { useCartLists, useCheck, useOrderResult } from "hooks/state";
 
 const Home = () => {
-  const [currentDeliveryType, setCurrentDeliveryType] = useState(null);
-  const [cartListsData, setCartListsData] = useState(
-    cartLists.map((data) => ({ ...data, selected: true }))
-  );
-  const { check, setCheck } = useCheck(cartListsData);
-  const [orderResult, setOrderResult] = useState({
-    totalPrice: 0,
-    cartListsData: [],
-    currentDeliveryType,
-  });
-
   const inputRef = useRef();
+
+  const [currentDeliveryType, setCurrentDeliveryType] = useState(null);
+  const { cartListsData, setCartListsData } = useCartLists();
+  const { check, setCheck, handleCheck } = useCheck(cartListsData);
+  const { orderResult, getTotalPrice } = useOrderResult(
+    currentDeliveryType,
+    cartListsData
+  );
+
   useEffect(() => {
     if (inputRef.current) {
-      if (cartListsData.filter(data => data.selected).length === cartLists.length) {
+      if (
+        cartListsData.filter((data) => data.selected).length ===
+        cartLists.length
+      ) {
         inputRef.current.checked = true;
       } else {
         inputRef.current.checked = false;
       }
     }
-  }, [check, cartListsData.length]);
+  }, [check, cartListsData.length, cartListsData]);
 
-
-  const handleCheck = () => {
-    setCheck((prev) => ({ ...prev, allChk: !prev.allChk }));
-  };
-
-  useEffect(() => {
-    setOrderResult((prev) => ({
-      ...prev,
-      currentDeliveryType,
-      cartListsData: cartListsData.filter((data) => data.selected),
-    }));
-  }, [currentDeliveryType, cartListsData]);
-
-  const getTotalPrice = (result) => {
-    setOrderResult((prev) => ({ ...prev, totalPrice: result }));
-  };
-
+  // 주문하기 버튼 눌렀을 때
   const handleOrder = () => {
     if (!orderResult.cartListsData.length) alert("상품을 선택해주세요");
     else if (currentDeliveryType === null) alert("배송 방법을 선택해주세요");
     else console.log(orderResult);
   };
+
+  console.log(check)
 
   return (
     <div className="cart">
