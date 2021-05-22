@@ -12,6 +12,11 @@ const Home = (props) => {
     cartLists.map((data) => ({ ...data, selected: true }))
   );
   const { check, setCheck } = useCheck(cartListsData);
+  const [orderResult, setOrderResult] = useState({
+    totalPrice: 0,
+    cartListsData: [],
+    currentDeliveryType,
+  });
 
   const inputRef = useRef();
   useEffect(() => {
@@ -28,6 +33,26 @@ const Home = (props) => {
     setCheck((prev) => !prev);
   };
 
+  useEffect(() => {
+    console.log(currentDeliveryType);
+
+    setOrderResult((prev) => ({
+      ...prev,
+      currentDeliveryType,
+      cartListsData: cartListsData.filter((data) => data.selected),
+    }));
+  }, [currentDeliveryType, cartListsData]);
+
+  const getTotalPrice = (result) => {
+    setOrderResult((prev) => ({ ...prev, totalPrice: result }));
+  };
+
+  const handleOrder = () => {
+    console.log(orderResult.cartListsData.length);
+    if (!orderResult.cartListsData.length) alert("상품을 선택해주세요");
+    else if (currentDeliveryType === null) alert("배송 방법을 선택해주세요");
+    else console.log(orderResult);
+  };
 
   return (
     <div className="cart">
@@ -74,7 +99,9 @@ const Home = (props) => {
       <Total
         currentDeliveryType={currentDeliveryType}
         cartListsData={cartListsData}
+        getTotalPrice={getTotalPrice}
       />
+      <button onClick={handleOrder}>주문하기</button>
     </div>
   );
 };

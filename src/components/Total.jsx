@@ -1,10 +1,14 @@
 import { useDropdown } from "hooks/state";
 import React, { useEffect } from "react";
 
-const Total = ({ currentDeliveryType, cartListsData }) => {
+const Total = ({ currentDeliveryType, cartListsData, getTotalPrice }) => {
   const totalPrice = cartListsData
     .filter((data) => data.selected)
     .reduce((a, b) => a + b.product_price * b.select_count, 0);
+
+  useEffect(() => {
+    getTotalPrice(totalPrice);
+  }, [totalPrice]);
 
   return (
     <div className="total">
@@ -26,7 +30,12 @@ const Total = ({ currentDeliveryType, cartListsData }) => {
         원
       </p>
       <p className="total_item price">
-        총 결제하실 금액<span>{currentDeliveryType && totalPrice + currentDeliveryType.delivery_price}</span>원
+        총 결제하실 금액
+        <span>
+          {currentDeliveryType &&
+            totalPrice + currentDeliveryType.delivery_price}
+        </span>
+        원
       </p>
     </div>
   );
