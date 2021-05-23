@@ -40,7 +40,12 @@ const Home = () => {
 
   return (
     <div className="cart">
-      <h2 className="cart_title main">장바구니</h2>
+      <h2 className="cart_title main">
+        <span className="cart_icon">
+          <i className="fas fa-shopping-cart"></i>
+        </span>
+        장바구니
+      </h2>
       <div className="cart_content">
         <h3 className="cart_title address">주소</h3>
         <p>서울시 강남구 도산대로 174 7층</p>
