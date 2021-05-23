@@ -10,23 +10,26 @@ const Home = () => {
 
   const [currentDeliveryType, setCurrentDeliveryType] = useState(null);
   const { cartListsData, setCartListsData } = useCartLists();
-  const { check, setCheck, handleCheck } = useCheck(cartListsData);
+  const { check, setCheck, handleCheck } = useCheck(
+    cartListsData,
+    setCartListsData
+  );
   const { orderResult, getTotalPrice } = useOrderResult(
     currentDeliveryType,
     cartListsData
   );
 
   useEffect(() => {
-    const filterd = cartListsData.filter((data) => data.selected);
-    
+    const filtered = cartListsData.filter((data) => data.selected);
+
     if (inputRef.current) {
-      if (check.allChk && filterd.length === cartListsData.length) {
+      if (filtered.length === cartListsData.length) {
         inputRef.current.checked = true;
-      } else if (filterd.length !== cartListsData.length) {
+      } else {
         inputRef.current.checked = false;
       }
     }
-  }, [cartListsData, check.allChk]);
+  }, [cartListsData, check]);
 
   // 주문하기 버튼 눌렀을 때
   const handleOrder = () => {

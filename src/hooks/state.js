@@ -39,16 +39,33 @@ export const useDropdown = () => {
   };
 };
 
-export const useCheck = (cartItems) => {
+export const useCheck = (cartItems, setCartListsData) => {
   const [check, setCheck] = useState({
     allChk: true,
     checkedItem: cartItems.length,
   });
 
-  const handleCheck = () =>
-  setCheck((prev) => ({ ...prev, allChk: !prev.allChk }));
+  const handleCheck = () => {
+    if (check.allChk) {
+      setCartListsData((prev) =>
+        prev.map((data) => ({ ...data, selected: false }))
+      );
+    } else {
+      setCartListsData((prev) =>
+        prev.map((data) => ({ ...data, selected: true }))
+      );
+    }
+  };
 
-  return { check, setCheck,handleCheck };
+  useEffect(() => {
+    const filtered = cartItems.filter((data) => data.selected === true);
+
+    if (filtered.length === cartItems.length)
+      setCheck((prev) => ({ ...prev, allChk: true }));
+    else setCheck((prev) => ({ ...prev, allChk: false }));
+  }, [cartItems]);
+
+  return { check, setCheck, handleCheck };
 };
 
 export const useCartLists = () => {
@@ -59,7 +76,7 @@ export const useCartLists = () => {
   return { cartListsData, setCartListsData };
 };
 
-export const useOrderResult = (type,data) => {
+export const useOrderResult = (type, data) => {
   const [orderResult, setOrderResult] = useState({
     totalPrice: 0,
     cartListsData: [],
@@ -73,10 +90,10 @@ export const useOrderResult = (type,data) => {
   useEffect(() => {
     setOrderResult((prev) => ({
       ...prev,
-      currentDeliveryType:type,
+      currentDeliveryType: type,
       cartListsData: data.filter((data) => data.selected),
     }));
   }, [type, data]);
 
-  return { orderResult, setOrderResult,getTotalPrice };
+  return { orderResult, setOrderResult, getTotalPrice };
 };

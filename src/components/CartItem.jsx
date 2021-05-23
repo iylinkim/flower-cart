@@ -51,15 +51,9 @@ const CartItem = ({
         inputRef.current.checked = false;
       }
     }
-  }, [check, cartListsData.length]);
+  }, [info.selected]);
 
-  useEffect(() => {
-    if (check.allChk) {
-      inputRef.current.checked = true;
-    } else {
-      inputRef.current.checked = false;
-    }
-  }, [check.allChk]);
+
 
   return (
     <li id={id} className="cart_item">
